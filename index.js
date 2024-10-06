@@ -16,14 +16,14 @@ connectDatabase();
 // Initialize Express
 const app = express();
 const allowedOrigins = [
-  // "http://localhost:5173",
-  // "https://urbanethnic.netlify.app",
+  "http://localhost:5173",
+  "https://poultry-backend-pdpi.onrender.com",
 ];
 
 // middleware
 app.use(
   cors({
-    // origin: allowedOrigins,
+    origin: allowedOrigins,
   })
 );
 app.use(express.json());
