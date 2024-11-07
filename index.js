@@ -17,7 +17,7 @@ connectDatabase();
 const app = express();
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://poultry-backend-pdpi.onrender.com",
+  // "https://poultry-backend-pdpi.onrender.com",
   "https://aadarshudyoug.netlify.app"
 ];
 

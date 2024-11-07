@@ -1,5 +1,5 @@
 import express from "express";
-import { createProduct, getProducts } from "../controllers/productController.js";
+import { createProduct, getProductByCategory, getProducts } from "../controllers/productController.js";
 import { upload } from "../middlewares/multerMiddleware.js";
 
 const router = express.Router();
@@ -18,5 +18,8 @@ router.post(
 
 // GET /api/products
 router.get("/get-products", getProducts);
+
+// GET /category wise products routes
+router.get("/product-category/:slug", getProductByCategory);
 
 export default router;

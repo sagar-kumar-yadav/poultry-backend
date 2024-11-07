@@ -65,3 +65,23 @@ export const getProducts = async (req, res) => {
       .send({ success: false, message: "error in getting products", error });
   }
 };
+
+// get product by category || GET
+export const getProductByCategory = async (req, res) => {
+  try {
+    const category = await categoryModel.findOne({ slug: req.params.slug });
+    const products = await productModel.find({ category }).populate("category");
+    res.status(200).send({
+      success: true,
+      category,
+      products,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({
+      success: false,
+      message: "error while getting product",
+      error,
+    });
+  }
+};
