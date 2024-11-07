@@ -85,3 +85,27 @@ export const getProductByCategory = async (req, res) => {
     });
   }
 };
+
+
+// search for products 
+export const searchProduct = async (req, res) => {
+  try {
+    const { keyword } = req.params;
+    const results = await productModel
+      .find({
+        $or: [
+          { name: { $regex: keyword, $options: "i" } },
+          { description: { $regex: keyword, $options: "i" } },
+        ],
+      })
+      .select("-photo");
+    res.json(results);
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({
+      success: false,
+      message: "error in  search product",
+      error,
+    });
+  }
+};

@@ -1,5 +1,5 @@
 import express from "express";
-import { createProduct, getProductByCategory, getProducts } from "../controllers/productController.js";
+import { createProduct, getProductByCategory, getProducts, searchProduct } from "../controllers/productController.js";
 import { upload } from "../middlewares/multerMiddleware.js";
 
 const router = express.Router();
@@ -21,5 +21,8 @@ router.get("/get-products", getProducts);
 
 // GET /category wise products routes
 router.get("/product-category/:slug", getProductByCategory);
+
+// search products routes
+router.get("/search/:keyword", searchProduct);
 
 export default router;
